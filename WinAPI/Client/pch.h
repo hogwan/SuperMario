@@ -3,3 +3,4 @@
 #include "struct.h"
 
 #include <windows.h>
+#include <vector>
