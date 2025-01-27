@@ -15,6 +15,9 @@ private:
 	POINT m_ptResolution = { 0,0 }; // 메인 윈도우 해상도
 	HDC m_hDC = 0; //메인 윈도우에 Draw할 DC
 
+	HBITMAP m_hBit = 0;
+	HDC m_memDC = 0;
+
 public:
 	int init(HWND _hWnd, POINT _ptResolution);
 	void progress();
