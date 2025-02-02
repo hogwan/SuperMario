@@ -3,6 +3,7 @@
 #include "CObject.h"
 #include "CKeyMgr.h"
 #include "CTimeMgr.h"
+#include "CSceneMgr.h"
 
 CCore::CCore()
 {
@@ -15,8 +16,6 @@ CCore::~CCore()
 	DeleteObject(m_hBit);
 }
 
-
-CObject g_obj;
 int CCore::init(HWND _hWnd, POINT _ptResolution)
 {
 	m_hWnd = _hWnd;
@@ -39,12 +38,10 @@ int CCore::init(HWND _hWnd, POINT _ptResolution)
 	HBITMAP hOldBit = (HBITMAP)SelectObject(m_memDC, m_hBit);
 	DeleteObject(hOldBit);
 
-	g_obj.SetPos(Vec2((int)m_ptResolution.x / 2, m_ptResolution.y / 2));
-	g_obj.SetScale(Vec2(100, 100));
-
 	//Manager 초기화
 	CTimeMgr::GetInst()->Init();
 	CKeyMgr::GetInst()->Init();
+	CSceneMgr::GetInst()->Init();
 
 	return S_OK;
 }
@@ -56,48 +53,27 @@ void CCore::progress()
 	CTimeMgr::GetInst()->update();
 	CKeyMgr::GetInst()->update();
 
-	update();
+	CSceneMgr::GetInst()->update();
 
-	// 그리기
-	render();
+	//===========
+	//render
+	//===========
+	// 화면 Clear
+	Rectangle(m_memDC, -1, -1, m_ptResolution.x + 1, m_ptResolution.y + 1);
+
+	CSceneMgr::GetInst()->render(m_memDC);
+
+	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y,
+		m_memDC, 0, 0, SRCCOPY);
 }
 
 void CCore::update()
 {
-	Vec2 Pos = g_obj.GetPos();
-	if (CKeyMgr::GetInst()->GetKeyState(KEY::LEFT) == KEY_STATE::HOLD)
-	{
-		Pos.x -= 200.f * fDT;
-	}
-	if (CKeyMgr::GetInst()->GetKeyState(KEY::RIGHT) == KEY_STATE::HOLD)
-	{
-		Pos.x += 200.f * fDT;
-	}
-	if (CKeyMgr::GetInst()->GetKeyState(KEY::UP) == KEY_STATE::HOLD)
-	{
-		Pos.y -= 200.f * fDT;
-	}
-	if (CKeyMgr::GetInst()->GetKeyState(KEY::DOWN) == KEY_STATE::HOLD)
-	{
-		Pos.y += 200.f * fDT;
-	}
 
-	g_obj.SetPos(Pos);
 }
 
 void CCore::render()
 {
-	// 화면 Clear
-	Rectangle(m_memDC, -1,-1,m_ptResolution.x+1,m_ptResolution.y+1);
-
-	Vec2 Pos = g_obj.GetPos();
-	Vec2 Scale = g_obj.GetScale();
-	Rectangle(m_memDC, static_cast<int>(Pos.x - Scale.x / 2.f),
-		static_cast<int>(Pos.y - Scale.y / 2.f),
-		static_cast<int>(Pos.x + Scale.x / 2.f),
-		static_cast<int>(Pos.y + Scale.y / 2.f));
-
-	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y,
-		m_memDC, 0, 0, SRCCOPY);
+	
 }
 
