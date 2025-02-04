@@ -9,6 +9,8 @@ public:
     void render(HDC _dc) override;
 
     void OnCollisionEnter(CCollider* _pOther) override;
+    CMonster* Clone() override { return new CMonster(*this); }
+
 
     CMonster();
 };

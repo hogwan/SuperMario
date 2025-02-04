@@ -5,12 +5,12 @@ class CCollider;
 class CObject
 {
 private:
-	std::wstring m_strName;
+	std::wstring	m_strName;
 
-	Vec2 m_vPos	= { 0.f,0.f };
-	Vec2 m_vScale = { 0.f,0.f };
+	Vec2			m_vPos			= { 0.f,0.f };
+	Vec2			m_vScale		= { 0.f,0.f };
 
-	CCollider* m_pCollider = nullptr;
+	CCollider*		m_pCollider		= nullptr;
 
 	bool m_bAlive = true;
 
@@ -33,6 +33,8 @@ private:
 	void SetDead() { m_bAlive = false; }
 
 public:
+	virtual CObject* Clone() = 0;
+
 	virtual void update() = 0;
 	virtual void finalupdate() final;
 	virtual void render(HDC _dc);
@@ -46,6 +48,7 @@ public:
 
 public:
 	CObject();
+	CObject(const CObject& _origin);
 	virtual ~CObject();
 
 	friend class CEventMgr;

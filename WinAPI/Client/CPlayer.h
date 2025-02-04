@@ -12,6 +12,7 @@ private:
 public:
 	void update() override;
 	void render(HDC _dc) override;
+	CPlayer* Clone() override { return new CPlayer(*this); } 
 
 	void CreateMissile();
 
