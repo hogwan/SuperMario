@@ -21,6 +21,11 @@ public:
 	void finalupdate();
 	void render(HDC _dc);
 
+	const std::vector<CObject*>& GetGroupObject(GROUP_TYPE _eType)
+	{
+		return m_arrObj[(UINT)_eType];
+	}
+
 public:
 	CScene();
 	virtual ~CScene();

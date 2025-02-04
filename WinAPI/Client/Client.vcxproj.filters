@@ -61,6 +61,12 @@
     <Filter Include="Engine\08.Module">
       <UniqueIdentifier>{2abf79e8-c6eb-476f-a5f6-b7e3569db093}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04.Object\Monster">
+      <UniqueIdentifier>{ea169f77-063f-48b1-a7fc-72ddb99973f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\CollisionMgr">
+      <UniqueIdentifier>{beb59341-c500-4005-bea3-e1edceca92a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCore.h">
@@ -129,6 +135,12 @@
     <ClInclude Include="SelectGDI.h">
       <Filter>Engine\08.Module</Filter>
     </ClInclude>
+    <ClInclude Include="CMonster.h">
+      <Filter>Engine\04.Object\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollisionMgr.h">
+      <Filter>Engine\CollisionMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -184,6 +196,12 @@
     </ClCompile>
     <ClCompile Include="SelectGDI.cpp">
       <Filter>Engine\08.Module</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonster.cpp">
+      <Filter>Engine\04.Object\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollisionMgr.cpp">
+      <Filter>Engine\CollisionMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

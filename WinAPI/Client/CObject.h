@@ -5,6 +5,8 @@ class CCollider;
 class CObject
 {
 private:
+	std::wstring m_strName;
+
 	Vec2 m_vPos	= { 0.f,0.f };
 	Vec2 m_vScale = { 0.f,0.f };
 
@@ -23,6 +25,10 @@ public:
 	virtual void update() = 0;
 	virtual void finalupdate() final;
 	virtual void render(HDC _dc);
+
+	virtual void OnCollision(CCollider* _pOther) {}
+	virtual void OnCollisionEnter(CCollider* _pOther) {}
+	virtual void OnCollisionExit(CCollider* _pOther) {}
 
 	// 컴포넌트 (충돌체, ...)
 	void component_render(HDC _dc);
