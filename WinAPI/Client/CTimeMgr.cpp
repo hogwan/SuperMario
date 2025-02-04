@@ -27,6 +27,11 @@ void CTimeMgr::update()
 	m_dDT = static_cast<double>((m_llCurCount.QuadPart - m_llPrevCount.QuadPart))
 		/static_cast<double>(m_llFrequency.QuadPart);
 
+	m_llPrevCount = m_llCurCount;
+}
+
+void CTimeMgr::render()
+{
 	m_dAcc += m_dDT;
 	++m_iCallCount;
 	if (m_dAcc >= 1.0)
@@ -39,7 +44,4 @@ void CTimeMgr::update()
 		swprintf_s(szBuffer, L"FPS: %d, DT : %f", m_iFPS, m_dDT);
 		SetWindowText(CCore::GetInst()->GetMainWnd(), szBuffer);
 	}
-
-
-	m_llPrevCount = m_llCurCount;
 }

@@ -6,6 +6,7 @@ class CTimeMgr
 public:
 	void Init();
 	void update();
+	void render();
 
 	double GetDT() { return m_dDT; }
 	float GetfDT() { return static_cast<float>(m_dDT); }

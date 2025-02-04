@@ -23,6 +23,7 @@ public:
 	void progress();
 
 	HWND GetMainWnd() { return m_hWnd; }
+	HDC GetMainDC() { return m_hDC; }
 
 	void update();
 	void render();

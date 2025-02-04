@@ -4,6 +4,7 @@
 #include "CKeyMgr.h"
 #include "CTimeMgr.h"
 #include "CSceneMgr.h"
+#include "CPathMgr.h"
 
 CCore::CCore()
 {
@@ -41,6 +42,7 @@ int CCore::init(HWND _hWnd, POINT _ptResolution)
 	//Manager 초기화
 	CTimeMgr::GetInst()->Init();
 	CKeyMgr::GetInst()->Init();
+	CPathMgr::GetInst()->Init();
 	CSceneMgr::GetInst()->Init();
 
 	return S_OK;
@@ -61,6 +63,7 @@ void CCore::progress()
 	// 화면 Clear
 	Rectangle(m_memDC, -1, -1, m_ptResolution.x + 1, m_ptResolution.y + 1);
 
+	//CTimeMgr::GetInst()->render();
 	CSceneMgr::GetInst()->render(m_memDC);
 
 	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y,

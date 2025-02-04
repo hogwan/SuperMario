@@ -14,7 +14,7 @@ public:
 
 	float Length()
 	{
-		return sqrt(x * x + y * y);
+		return static_cast<float>(sqrt(x * x + y * y));
 	}
 
 	Vec2& Normalize()
