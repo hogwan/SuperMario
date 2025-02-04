@@ -6,6 +6,10 @@
 #include "CPathMgr.h"
 #include "CResMgr.h"
 #include "CCollider.h"
+#include "CMissile.h"
+#include "CSceneMgr.h"
+#include "CScene.h"
+#include "CEventMgr.h"
 
 
 CPlayer::CPlayer()
@@ -46,6 +50,11 @@ void CPlayer::update()
 		vPos.x += 200 * fDT;
 	}
 
+	if (CKeyMgr::GetInst()->GetKeyState(KEY::SPACE) == KEY_STATE::TAP)
+	{
+		CreateMissile();
+	}
+
 	SetPos(vPos);
 }
 
@@ -65,5 +74,15 @@ void CPlayer::render(HDC _dc)
 	TransparentBlt(_dc, LTX, LTY, iWidth, iHeight, m_pTex->GetDC(), 0, 0, iWidth, iHeight, RGB(255,0,255));
 
 	component_render(_dc);
+}
+
+void CPlayer::CreateMissile()
+{
+	CObject* pObj = new CMissile;
+	pObj->SetName(L"Missile");
+	   
+	pObj->SetPos(GetPos());
+	CreateObject(pObj, GROUP_TYPE::PROJ_PLAYER);
+
 }
 

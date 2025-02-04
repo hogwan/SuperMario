@@ -28,6 +28,14 @@ void CTimeMgr::update()
 		/static_cast<double>(m_llFrequency.QuadPart);
 
 	m_llPrevCount = m_llCurCount;
+
+#ifdef _DEBUG
+	if (m_dDT > 1. / 60.)
+	{
+		m_dDT = 1. / 60.;
+	}
+
+#endif
 }
 
 void CTimeMgr::render()

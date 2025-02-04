@@ -6,6 +6,7 @@
 #include "CSceneMgr.h"
 #include "CPathMgr.h"
 #include "CCollisionMgr.h"
+#include "CEventMgr.h"
 
 CCore::CCore()
 {
@@ -62,22 +63,33 @@ void CCore::progress()
 {
 	//Manager Update
 	CTimeMgr::GetInst()->update();
+	CKeyMgr::GetInst()->update();
 
+	//======================
+	// Scene Update
+	//======================
 	CSceneMgr::GetInst()->update();
+
+	//충돌 체크
 	CCollisionMgr::GetInst()->update();
 
-	CKeyMgr::GetInst()->update();
 	//===========
 	//render
 	//===========
 	// 화면 Clear
 	Rectangle(m_memDC, -1, -1, m_ptResolution.x + 1, m_ptResolution.y + 1);
 
-	CTimeMgr::GetInst()->render();
 	CSceneMgr::GetInst()->render(m_memDC);
 
 	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y,
 		m_memDC, 0, 0, SRCCOPY);
+
+	CTimeMgr::GetInst()->render();
+
+	//=================
+	//이벤트 지연 처리
+	//=================
+	CEventMgr::GetInst()->update();
 }
 
 void CCore::CreateBrushPen()

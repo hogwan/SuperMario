@@ -12,6 +12,8 @@ private:
 
 	CCollider* m_pCollider = nullptr;
 
+	bool m_bAlive = true;
+
 public:
 	inline Vec2 GetPos() { return m_vPos; }
 	inline Vec2 GetScale() { return m_vScale; }
@@ -19,8 +21,17 @@ public:
 	inline void SetPos(Vec2 _vPos) { m_vPos = _vPos; }
 	inline void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
 
+	void SetName(const std::wstring _strName) { m_strName = _strName; }
+	const std::wstring& GetName() { return m_strName; }
+
 	void CreateCollider();
 	CCollider* GetCollider() { return m_pCollider; }
+
+	bool IsDead() { return !m_bAlive; }
+
+private:
+	void SetDead() { m_bAlive = false; }
+
 public:
 	virtual void update() = 0;
 	virtual void finalupdate() final;
@@ -36,5 +47,7 @@ public:
 public:
 	CObject();
 	virtual ~CObject();
+
+	friend class CEventMgr;
 };
 

@@ -8,6 +8,8 @@ public:
     void update() override;
     void render(HDC _dc) override;
 
+    void OnCollisionEnter(CCollider* _pOther) override;
+
     CMonster();
 };
 

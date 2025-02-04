@@ -13,6 +13,8 @@ public:
 	void update() override;
 	void render(HDC _dc) override;
 
+	void CreateMissile();
+
 public:
 	CPlayer();
 	~CPlayer();
