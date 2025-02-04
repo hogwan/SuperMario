@@ -18,6 +18,7 @@ public:
 	void AddObject(CObject* _obj, GROUP_TYPE _type);
 
 	void update();
+	void finalupdate();
 	void render(HDC _dc);
 
 public:

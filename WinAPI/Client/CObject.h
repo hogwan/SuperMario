@@ -1,9 +1,14 @@
 #pragma once
+
+class CCollider;
+
 class CObject
 {
 private:
 	Vec2 m_vPos	= { 0.f,0.f };
 	Vec2 m_vScale = { 0.f,0.f };
+
+	CCollider* m_pCollider = nullptr;
 
 public:
 	inline Vec2 GetPos() { return m_vPos; }
@@ -12,8 +17,15 @@ public:
 	inline void SetPos(Vec2 _vPos) { m_vPos = _vPos; }
 	inline void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
 
+	void CreateCollider();
+	CCollider* GetCollider() { return m_pCollider; }
+public:
 	virtual void update() = 0;
+	virtual void finalupdate() final;
 	virtual void render(HDC _dc);
+
+	// 컴포넌트 (충돌체, ...)
+	void component_render(HDC _dc);
 
 public:
 	CObject();
