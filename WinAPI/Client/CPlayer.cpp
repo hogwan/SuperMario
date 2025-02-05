@@ -10,15 +10,22 @@
 #include "CSceneMgr.h"
 #include "CScene.h"
 #include "CEventMgr.h"
+#include "CAnimator.h"
 
 
 CPlayer::CPlayer()
 {
-	m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\TestTexture.bmp");
+	//m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\TestTexture.bmp");
 
 	CreateCollider();
-
 	GetCollider()->SetScale(Vec2(50.f, 50.f));
+
+	CTexture* m_pTex = CResMgr::GetInst()->LoadTexture(L"PlayerTex", L"texture\\MarioRight.bmp");
+	CreateAnimator();
+	GetAnimator()->CreateAnimation(L"Idle_Right", m_pTex, Vec2(0.f, 0.f), Vec2(64.f, 56.f),1.f, Vec2(64.f, 0.f), 1);
+	GetAnimator()->CreateAnimation(L"Run_Right", m_pTex, Vec2(65.f, 0.f), Vec2(64.f, 56.f),1.f, Vec2(64.f, 0.f), 3);
+
+	GetAnimator()->Play(L"Run_Right", true);
 }
 
 CPlayer::~CPlayer()
@@ -56,22 +63,24 @@ void CPlayer::update()
 	}
 
 	SetPos(vPos);
+
+	GetAnimator()->update();
 }
 
 void CPlayer::render(HDC _dc)
 {
-	int iWidth = static_cast<int>(m_pTex->Width());
+	/*int iWidth = static_cast<int>(m_pTex->Width());
 	int iHeight = static_cast<int>(m_pTex->Height());
 
 	Vec2 vPos = GetPos();
 
 	int LTX = static_cast<int>(vPos.x - static_cast<float>(iWidth / 2));
 	int LTY = static_cast<int>(vPos.y - static_cast<float>(iHeight / 2));
-
+*/
 
 	//BitBlt(_dc, LTX, LTY, iWidth, iHeight, m_pTex->GetDC(), 0, 0, SRCCOPY);
 
-	TransparentBlt(_dc, LTX, LTY, iWidth, iHeight, m_pTex->GetDC(), 0, 0, iWidth, iHeight, RGB(255,0,255));
+	//TransparentBlt(_dc, LTX, LTY, iWidth, iHeight, m_pTex->GetDC(), 0, 0, iWidth, iHeight, RGB(255,0,255));
 
 	component_render(_dc);
 }

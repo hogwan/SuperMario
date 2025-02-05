@@ -17,3 +17,19 @@ void Safe_Delete_Vec(std::vector<T>& _vec)
 	}
 	_vec.clear();
 }
+
+template<typename T1, typename T2>
+void Safe_Delete_Map(std::map<T1, T2>& _map)
+{
+	typename std::map<T1, T2>::iterator iter = _map.begin();
+
+	for (; iter != _map.end(); ++iter)
+	{
+		if (nullptr != iter->second)
+		{
+			delete iter->second;
+		}
+	}
+
+	_map.clear();
+}

@@ -1,6 +1,7 @@
 #pragma once
 
 class CCollider;
+class CAnimator;
 
 class CObject
 {
@@ -10,7 +11,9 @@ private:
 	Vec2			m_vPos			= { 0.f,0.f };
 	Vec2			m_vScale		= { 0.f,0.f };
 
+	//component
 	CCollider*		m_pCollider		= nullptr;
+	CAnimator*		m_pAnimator		= nullptr;
 
 	bool m_bAlive = true;
 
@@ -25,6 +28,9 @@ public:
 	const std::wstring& GetName() { return m_strName; }
 
 	void CreateCollider();
+	void CreateAnimator();
+
+	CAnimator* GetAnimator() { return m_pAnimator; }
 	CCollider* GetCollider() { return m_pCollider; }
 
 	bool IsDead() { return !m_bAlive; }

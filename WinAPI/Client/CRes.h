@@ -11,5 +11,9 @@ public:
 
 	const std::wstring& GetKey() { return m_strKey; }
 	const std::wstring& GetRelativePath() { return m_strRelativePath; }
+
+public:
+	CRes();
+	virtual ~CRes();
 };
 

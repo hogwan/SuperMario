@@ -43,7 +43,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 실행 된 프로세스의 �
         return FALSE;
     }
 
-    if (FAILED(CCore::GetInst()->init(g_hWnd,POINT{1280, 768})))
+    if (FAILED(CCore::GetInst()->init(g_hWnd,POINT{800, 600})))
     {
         MessageBox(nullptr, L"Core 객체 초기화 실패", L"ERROR", MB_OK);
 

@@ -64,11 +64,23 @@
     <Filter Include="Engine\04.Object\Monster">
       <UniqueIdentifier>{ea169f77-063f-48b1-a7fc-72ddb99973f1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\CollisionMgr">
-      <UniqueIdentifier>{beb59341-c500-4005-bea3-e1edceca92a4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\03.Manager\EventMgr">
       <UniqueIdentifier>{84743e6b-f556-4298-990a-6d13bc40381a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03.Manager\CollisionMgr">
+      <UniqueIdentifier>{beb59341-c500-4005-bea3-e1edceca92a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07.Component\Collider">
+      <UniqueIdentifier>{460db6ba-fcc0-4735-bf5b-13128c4410bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07.Component\Animator">
+      <UniqueIdentifier>{fa3421df-87b5-41f3-ad28-9d52767c6cf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07.Component\Animator\Animation">
+      <UniqueIdentifier>{3d775766-1f1c-48ba-b5cc-04e5d6c2a831}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03.Manager\Camera">
+      <UniqueIdentifier>{950cf71b-b90e-4c01-b6e0-62815c10945f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -132,9 +144,6 @@
     <ClInclude Include="CResMgr.h">
       <Filter>Engine\03.Manager\ResMgr</Filter>
     </ClInclude>
-    <ClInclude Include="CCollider.h">
-      <Filter>Engine\07.Component</Filter>
-    </ClInclude>
     <ClInclude Include="SelectGDI.h">
       <Filter>Engine\08.Module</Filter>
     </ClInclude>
@@ -142,7 +151,7 @@
       <Filter>Engine\04.Object\Monster</Filter>
     </ClInclude>
     <ClInclude Include="CCollisionMgr.h">
-      <Filter>Engine\CollisionMgr</Filter>
+      <Filter>Engine\03.Manager\CollisionMgr</Filter>
     </ClInclude>
     <ClInclude Include="CEventMgr.h">
       <Filter>Engine\03.Manager\EventMgr</Filter>
@@ -155,6 +164,15 @@
     </ClInclude>
     <ClInclude Include="CScene_Tool.h">
       <Filter>Engine\05.Scene\Scene_Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollider.h">
+      <Filter>Engine\07.Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimator.h">
+      <Filter>Engine\07.Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimation.h">
+      <Filter>Engine\07.Component\Animator\Animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -206,9 +224,6 @@
     <ClCompile Include="CResMgr.cpp">
       <Filter>Engine\03.Manager\ResMgr</Filter>
     </ClCompile>
-    <ClCompile Include="CCollider.cpp">
-      <Filter>Engine\07.Component</Filter>
-    </ClCompile>
     <ClCompile Include="SelectGDI.cpp">
       <Filter>Engine\08.Module</Filter>
     </ClCompile>
@@ -216,7 +231,7 @@
       <Filter>Engine\04.Object\Monster</Filter>
     </ClCompile>
     <ClCompile Include="CCollisionMgr.cpp">
-      <Filter>Engine\CollisionMgr</Filter>
+      <Filter>Engine\03.Manager\CollisionMgr</Filter>
     </ClCompile>
     <ClCompile Include="CEventMgr.cpp">
       <Filter>Engine\03.Manager\EventMgr</Filter>
@@ -229,6 +244,15 @@
     </ClCompile>
     <ClCompile Include="CScene_Tool.cpp">
       <Filter>Engine\05.Scene\Scene_Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollider.cpp">
+      <Filter>Engine\07.Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimator.cpp">
+      <Filter>Engine\07.Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimation.cpp">
+      <Filter>Engine\07.Component\Animator\Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

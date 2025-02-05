@@ -6,8 +6,6 @@ class CTexture;
 class CPlayer : 
 	public CObject
 {
-private:
-	CTexture* m_pTex = nullptr;
 
 public:
 	void update() override;
