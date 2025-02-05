@@ -34,6 +34,8 @@ public:
 	{
 		x = static_cast<float>(_pt.x);
 		y = static_cast<float>(_pt.y);
+
+		return *this;
 	}
 
 	Vec2 operator + (const Vec2 _vOther)
@@ -56,10 +58,21 @@ public:
 		return Vec2(x * (float)_i, y * (float)_i);
 	}
 
+	Vec2 operator* (float _f)
+	{
+		return Vec2(x * _f, y * _f);
+	}
+
 	Vec2 operator / (const Vec2 _vOther)
 	{
-		assert(0.f == _vOther.x || 0.f == _vOther.y);
+		assert(!(0.f == _vOther.x || 0.f == _vOther.y));
 		return Vec2(x / _vOther.x, y / _vOther.y);
+	}
+
+	Vec2 operator / (float _f)
+	{
+		assert(!(0.f == _f));
+		return Vec2(x / _f, y /_f);
 	}
 
 	void operator +=(const Vec2 _vOther)

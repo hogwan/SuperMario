@@ -30,6 +30,7 @@ public:
 	HDC GetMainDC() { return m_hDC; }
 	HBRUSH GetBrush(BRUSH_TYPE _eType) { return m_arrBrush[(UINT)_eType]; }
 	HPEN GetPen(PEN_TYPE _eType) { return m_arrPen[(UINT)_eType]; }
+	POINT GetResolution() { return m_ptResolution; }
 
 	void CreateBrushPen();
 

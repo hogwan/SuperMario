@@ -43,11 +43,12 @@ void CCollider::render(HDC _dc)
 	SelectGDI p(_dc, ePen);
 	SelectGDI b(_dc, BRUSH_TYPE::HOLLOW);
 
+	Vec2 vPos = CCamera::GetInst()->GetRenderPos(m_vFinalPos);
 	Rectangle(_dc
-		, static_cast<int>(m_vFinalPos.x - m_vScale.x / 2.f)
-		, static_cast<int>(m_vFinalPos.y - m_vScale.y / 2.f)
-		, static_cast<int>(m_vFinalPos.x + m_vScale.x / 2.f)
-		, static_cast<int>(m_vFinalPos.y + m_vScale.y / 2.f));
+		, static_cast<int>(vPos.x - m_vScale.x / 2.f)
+		, static_cast<int>(vPos.y - m_vScale.y / 2.f)
+		, static_cast<int>(vPos.x + m_vScale.x / 2.f)
+		, static_cast<int>(vPos.y + m_vScale.y / 2.f));
 
 }
 

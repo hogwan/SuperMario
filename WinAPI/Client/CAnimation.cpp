@@ -48,6 +48,8 @@ void CAnimation::render(HDC _dc)
 	Vec2 vLT = m_vecFrm[m_iCurFrm].vLT;
 	vPos += m_vecFrm[m_iCurFrm].vOffset; //Object Position 에 Offset 만큼 추가
 
+	vPos = CCamera::GetInst()->GetRenderPos(vPos);
+
 	TransparentBlt(_dc
 		, static_cast<int>(vPos.x - vScale.x / 2.f)
 		, static_cast<int>(vPos.y - vScale.y / 2.f)
@@ -67,7 +69,7 @@ void CAnimation::Create(CTexture* _pTex, Vec2 _vLT, Vec2 _vSliceSize, float _fDu
 
 	tAnimFrm frm = {};
 
-	for (UINT i = 0; i < _iFrameCount; ++i)
+	for (int i = 0; i < (int)_iFrameCount; ++i)
 	{
 		frm.fDuration = _fDuration;
 		frm.vSlice = _vSliceSize;

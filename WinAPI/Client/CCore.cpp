@@ -64,6 +64,7 @@ void CCore::progress()
 	//Manager Update
 	CTimeMgr::GetInst()->update();
 	CKeyMgr::GetInst()->update();
+	CCamera::GetInst()->update();
 
 	//======================
 	// Scene Update

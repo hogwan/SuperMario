@@ -65,12 +65,14 @@ void CObject::finalupdate()
 
 void CObject::render(HDC _dc)
 {
-	Rectangle(_dc, static_cast<int>(m_vPos.x - m_vScale.x / 2.f)
-		, static_cast<int>(m_vPos.y - m_vScale.y / 2.f)
-		, static_cast<int>(m_vPos.x + m_vScale.x / 2.f)
-		, static_cast<int>(m_vPos.y + m_vScale.y / 2.f));
+	Vec2 vRenderPos = CCamera::GetInst()->GetRenderPos(m_vPos);
 
-	
+	Rectangle(_dc, static_cast<int>(vRenderPos.x - m_vScale.x / 2.f)
+		, static_cast<int>(vRenderPos.y - m_vScale.y / 2.f)
+		, static_cast<int>(vRenderPos.x + m_vScale.x / 2.f)
+		, static_cast<int>(vRenderPos.y + m_vScale.y / 2.f));
+
+	component_render(_dc);
 }
 
 void CObject::component_render(HDC _dc)

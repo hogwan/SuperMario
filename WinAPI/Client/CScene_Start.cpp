@@ -7,6 +7,8 @@
 #include "CCollisionMgr.h"
 #include "CKeyMgr.h"
 #include "CSceneMgr.h"
+#include "CCamera.h"
+#include "CCore.h"
 
 
 CScene_Start::CScene_Start()
@@ -25,6 +27,12 @@ void CScene_Start::update()
 	{
 		ChangeScene(SCENE_TYPE::TOOL);
 	}
+
+	if (KEY_CHECK(KEY::LBTN, KEY_STATE::TAP))
+	{
+		Vec2 vLookAt = CCamera::GetInst()->GetRealPos(MOUSE_POS);
+		CCamera::GetInst()->SetLookAt(vLookAt);
+	}
 }
 
 void CScene_Start::Enter()
@@ -36,6 +44,7 @@ void CScene_Start::Enter()
 	pObj->SetScale(Vec2(100.f, 100.f));
 
 	AddObject(pObj, GROUP_TYPE::PLAYER);
+	CCamera::GetInst()->SetTarget(pObj);
 
 	pObj = new CMonster;
 	pObj->SetPos(Vec2(640.f, 50.f));
@@ -48,6 +57,11 @@ void CScene_Start::Enter()
 	// Player 그룹과 monster 그룹 간의 충돌체크
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER);
 	CCollisionMgr::GetInst()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PROJ_PLAYER);
+
+	//Camera Look 지정
+	Vec2 vResolution = CCore::GetInst()->GetResolution();
+	CCamera::GetInst()->SetLookAt(vResolution / 2.f);
+
 
 }
 

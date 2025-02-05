@@ -53,6 +53,9 @@ enum class KEY
 	ENTER,
 	ESC,
 
+	LBTN,
+	RBTN,
+
 	LAST,
 };
 struct tKeyInfo
@@ -67,7 +70,7 @@ class CKeyMgr
 	SINGLE(CKeyMgr);
 private:
 	std::vector<tKeyInfo> m_vecKey;
-
+	Vec2 m_vCurMousePos;
 public:
 	void Init();
 	void update();
@@ -77,5 +80,6 @@ public:
 		return m_vecKey[static_cast<int>(_key)].eState;
 	}
 
+	Vec2 GetMousePos() { return m_vCurMousePos; }
 };
 
